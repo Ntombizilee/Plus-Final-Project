@@ -13,55 +13,58 @@
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-    <header>
-      <form>
-        <input
-          type="search"
-          placeholder="Enter a city📍"
-          required
-          id="search-form-input"
-          class="search-form-input"
-        />
-        <input
-          type="submit"
-          value="Search"
-          class="search-form-button"
-          id="search-form-button"
-        />
-      </form>
-    </header>
-    <main>
-      <div class="weather-app-data">
-        <div>
-          <h1 class="city-name" id="city">Johannesburg</h1>
-          <p class="weather-information">
-            Sunday 23:37, clear sky <br />Humidity: <strong>92%</strong>, Wind:
-            <strong>2.57km/h</strong>
-          </p>
+    <div class="weather-app">
+      <header>
+        <form>
+          <input
+            type="search"
+            placeholder="Search Location📍"
+            required
+            id="search-form-input"
+            class="search-form-input"
+          />
+          <input
+            type="submit"
+            value="Search"
+            class="search-form-button"
+            id="search-form-button"
+          />
+        </form>
+      </header>
+      <main>
+        <div class="weather-app-data">
+          <div>
+            <h1 class="city-name" id="city">Johannesburg</h1>
+            <p class="weather-information">
+              Sunday 23:37, clear sky <br />Humidity: <strong>92%</strong>,
+              Wind:
+              <strong>2.57km/h</strong>
+            </p>
+          </div>
+          <div class="weather-app-temperature-container">
+            <div id="icon">🌨️</div>
+            <div class="weather-app-temperature" id="temperature">12</div>
+            <div class="weather-app-unit">°C</div>
+          </div>
         </div>
-        <div class="weather-app-temperature-container">
-          <div id="icon">🌨️</div>
-          <div class="weather-app-temperature" id="temperature">12</div>
-          <div class="weather-app-unit">°C</div>
-        </div>
-      </div>
-    </main>
+      </main>
 
-    <footer>
-      This project was coded by
-      <a href="https://github.com/Ntombizilee" target="_blank"
-        >Ntombizile Mabuso</a
-      >
-      ,
-      <a
-        href="https://github.com/Ntombizilee/Plus-Final-Project"
-        target="_blank"
-        >open-sourced on GitHub</a
-      >
-      and
-      <a href="https://plus-final-projecttt.netlify.app/" target="_blank"
-        >hosted on Netlify.</a
-      >
-    </footer>
+      <footer>
+        This project was coded by
+        <a href="https://github.com/Ntombizilee" target="_blank"
+          >Ntombizile Mabuso</a
+        >
+        ,
+        <a
+          href="https://github.com/Ntombizilee/Plus-Final-Project"
+          target="_blank"
+          >open-sourced on GitHub</a
+        >
+        and
+        <a href="https://plus-final-projecttt.netlify.app/" target="_blank"
+          >hosted on Netlify.</a
+        >
+      </footer>
+    </div>
   </body>
 </html>
