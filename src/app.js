@@ -50,39 +50,51 @@ function handleSearchSubmit(event) {
 
   searchCity(searchInput.value);
 }
-function getForecast(city) {
-  let apiKey = "a0e1a5e32f8008ob0b83d1b1c4bt4d9d";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=mertic`;
-  axios.get(apiUrl).then(displayForecast);
-  console.log(apiUrl);
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
 }
 
+function getForecast(city) {
+  let apiKey = "a0e1a5e32f8008ob0b83d1b1c4bt4d9d";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function displayForecast(response) {
-  console.log(response.data);
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-  <div class="weather-forecast-day">
-    <div class="weather-forecast-date">${day}</div>
-    <div class="weather-forecast-icon">🌤️</div>
-    <div class="weather-forecast-temperatures">
-      <div class="weather-forecast-temperature">
-        <strong>15º</strong>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
+      <div class="weather-forecast-day">
+       <div class="weather-forecast-item"></div>
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
+
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature">
+            <strong>${Math.round(day.temperature.maximum)}°</strong>
+          </div>
+          <div class="weather-forecast-temperature">${Math.round(
+            day.temperature.minimum
+          )}°</div>
+        </div>
       </div>
-      <div class="weather-forecast-temperature">9º</div>
-    </div>
-  </div>
-`;
+    `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-searchCity("Johannesburg");
+searchCity("Paris");
